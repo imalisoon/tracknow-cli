@@ -20,7 +20,7 @@ if __name__ == "__main__":
     os.system("clear")
     while True:
         display_dashboard()
-        print("[1] Categoria\n[0] Exit")
+        print("[1] Categorias\n[0] Exit")
         option = get_user_input()
 
         if option == "0":
@@ -42,6 +42,11 @@ if __name__ == "__main__":
                 elif option_category == "2":
                     category_controller.listCategories()
                     print()
+
+                elif option_category == "3":
+                    category_name = get_user_input("Nome da categoria a ser deletada: ")
+                    if category_controller.deleteCategory(category_name):
+                        print(f"{category_name} excluida.")
 
         else:
             print("Opcao invalida, tente denovo\n")

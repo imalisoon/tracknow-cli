@@ -17,3 +17,11 @@ class CategoryModelManager:
 
     def getCategories(self) -> list:
         return self._categories
+
+    def removeCategory(self, name: str) -> bool:
+        for i in range(len(self._categories)):
+            if self._categories[i].name == name:
+                self._categories.pop(i)
+                return True
+
+        return False

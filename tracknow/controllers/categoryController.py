@@ -13,3 +13,10 @@ class CategoryController:
     def listCategories(self) -> None:
         categories = self._model.getCategories()
         self._view.displayCategories(categories)
+
+    def deleteCategory(self, name: str) -> bool or None:
+        if not name:
+            print("insira um nome valido")
+            return
+        
+        return self._model.removeCategory(name)
