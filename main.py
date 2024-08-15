@@ -58,10 +58,18 @@ if __name__ == "__main__":
         elif option == "2":
             while True:
                 print("[+] Gerencie suas faturas [+]")
-                print("[2] Listar Faturas\n[0] Voltar")
+                print("[1] Criar fatura\n[2] Listar Faturas\n[0] Voltar")
                 option_invoice = get_user_input()
                 if option_invoice == "0":
                     break
+
+                elif option_invoice == "1":
+                    name = get_user_input("Sobre a fatura: ")
+                    value = get_user_input("Valor: ")
+                    iType = get_user_input("Renda ou Despesa? ")
+                    while iType.lower() not in ["renda", "despesa"]:
+                        iType = get_user_input("O tipo precisa ser renda ou despesa: ")
+                    invoice_controller.createInvoice(name, float(value), iType)
 
                 elif option_invoice == "2":
                     invoice_controller.listInvoices()

@@ -25,6 +25,9 @@ class IncomeModel(InvoiceModel):
     def __init__(self, name: str, value: float) -> None:
         super().__init__(name, value)
 
+    def getType(self) -> str:
+        return self._type
+
 
 class ExpenseModel(IncomeModel):
     """
@@ -36,17 +39,23 @@ class ExpenseModel(IncomeModel):
     def __init__(self, name: str, value: float) -> None:
         super().__init__(name, value)
 
+    def getType(self) -> str:
+        return self._type
+
 
 class InvoiceModelManager:
     def __init__(self) -> None:
         self._invoices: list = list()
 
-    def createInvoice(self, name: str, value: float, type: str) -> InvoiceModel or None:
-        if type.lower() == "renda":
-            return IncomeModel(name, value)
+    def createInvoice(self, name: str, value: float, iType: str) -> bool:
+        if iType.lower() == "renda":
+            self._invoices.append(IncomeModel(name, value))
+            return True
 
-        elif type.lower() == "despesa":
-            return ExpenseModel(name, value)
+        elif iType.lower() == "despesa":
+            self._invoices.append(ExpenseModel(name, value))
+            return True
+
         return False
 
     def getInvoices(self) -> list:

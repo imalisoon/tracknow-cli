@@ -7,4 +7,4 @@ class InvoiceView:
             return
 
         for invoice in invoices:
-            print(f"--- {i} - {invoice.name} | {invoice.value}")
+            print(f"{'+++' if invoice.getType() == 'income' else '---'} {i} - {invoice.name} | {invoice.value}")
